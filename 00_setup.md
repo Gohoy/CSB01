@@ -2,6 +2,7 @@
 
 - elixir official document: [Elixir Documentation - The Elixir programming language](https://elixir-lang.org/docs.html)
 - phoenix site: [Phoenix Framework](https://www.phoenixframework.org/)
+- package register: [hexdocs](https://hexdocs.pm)
 
 #### start
 
