@@ -34,7 +34,7 @@ defmodule ProjectWeb.MessageController do
     messages = Project.Chats.list_message()
 
     conn
-    |> render("data.json", messages: messages)
+    |> render("list_message.json", messages: messages)
   end
 end
 ```
@@ -47,10 +47,20 @@ Create `lib/project_web/views/message_view.ex`, edit
 
 ```elixir
 defmodule ProjectWeb.MessageView do
-    use ProjectWeb, :view
+  use ProjectWeb, :view
+  alias Project.Chats.Message
 
-    def render("data.json", %{messages: messages}) do
-        messages
-    end
+  def render("list_message.json", %{messages: messages}) do
+    render_many(messages, __MODULE__, "message.json")
+  end
+
+  def render("message.json", %{message: %Message{name: name, body: body}}) do
+    %{
+      name: name,
+      body: body
+    }
+  end
 end
 ```
+
+Now, you can access `<your site>/api/messages` to get JSON data.
